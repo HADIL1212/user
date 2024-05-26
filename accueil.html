@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistance Juridique en Ligne</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #7cb1e6;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .section {
+            padding: 20px;
+            margin-top: 60px; /* espace pour l'entête fixe */
+        }
+
+        .logo {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .menu-icon {
+            float: right;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .cta-buttons {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .cta-buttons button {
+            margin-left: 10px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 50px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul li {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .menu ul li:hover {
+            background: #f0f0f0;
+        }
+
+        .center-content {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .center-content h2 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .center-content h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+        }
+
+        .search-bar input, .search-bar button {
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        .search-bar input {
+            width: 300px;
+        }
+
+        .search-bar button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-link {
+            display: block;
+            margin: 20px 0;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: #003366;
+        }
+
+        .icons {
+            margin-top: 20px;
+        }
+
+        .icons img {
+            width: 50px;
+            margin: 0 10px;
+        }
+
+        .split-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .split-section img {
+            width: 40%;
+        }
+
+        .cta-button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .profile-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .profile-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            width: 22%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .profile-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .articles, .faq, .testimonials {
+            padding: 40px 20px;
+        }
+
+        .articles h2, .faq h2, .testimonials h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        .article-card, .faq-item, .testimonial-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .reviews {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .review {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px;
+            width: 30%;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #0b3e70;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #0b3e70;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .footer-left, .footer-center, .footer-right {
+            width: 30%;
+            text-align: center;
+        }
+
+        .footer-left .social-icons a {
+            display: inline-block;
+            margin: 5px;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        👋 Nous sommes disponibles sur le 09 80 80 62 72 pour une consultation en ligne
+    </header>
+
+    <div class="section">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="cta-buttons">
+            <button>Rechercher un avocat</button>
+            <button>Vous êtes un avocat</button>
+            <div class="menu-icon" onclick="toggleMenu()">
+                ☰
+            </div>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li>Mon RDV Préfectures</li>
+                <li>Guides Juridiques</li>
+                <li>Blog</li>
+                <li>Forums</li>
+                <li>Contact</li>
+                <li>Compte</li>
+                <li>À propos</li>
+            </ul>
+        </div>
+        <div class="center-content">
+            <h2>Assistance Juridique en Ligne</h2>
+            <h3>Besoin d’aide ? Appelez-nous sur le 09 80 80 62 72 pour une assistance juridique en ligne !</h3>
+            <div class="search-bar">
+                <input type="text" placeholder="Sélectionnez une préfecture">
+                <button>Confirmer</button>
+            </div>
+            <a href="#" class="cta-link">Ou vous cherchez un avocat ?</a>
+            <div class="icons">
+                <img src="icon1.png" alt="Icon 1">
+                <img src="icon2.png" alt="Icon 2">
+                <img src="icon3.png" alt="Icon 3">
+            </div>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div>
+            <h2>Prise de rendez-vous auprès des préfectures en quelques clics</h2>
+            <p>Le processus de prise de rendez-vous est simple et facile. Que vous cherchiez à obtenir un titre de séjour, une naturalisation ou à effectuer un changement d'adresse, nous vous simplifions la vie.</p>
+            <button class="cta-button">Commencez maintenant</button>
+        </div>
+        <img src="prefecture.jpg" alt="Préfecture">
+    </div>
+
+    <div class="split-section">
+        <div>
+            <h2>Nos expertises dans les différents domaines de droit</h2>
+            <ul>
+                <li><button>Droit de la famille</button></li>
+                <li><button>Droit du travail</button></li>
+                <li><button>Droit des étrangers</button></li>
+                <li><button>Droit civil</button></li>
+                <li><button>Droit pénal</button></li>
+            </ul>
+        </div>
+        <div class="profile-cards">
+            <div class="profile-card">
+                <img src="avocat1.jpg" alt="Avocat 1">
+                <h3>Jean Dupont</h3>
+                <p>Spécialité: Droit de la famille</p>
+                <p>Avis: ★★★★☆</p>
+                <p>Prix: 100€/h</p>
+                <p>Localisation: Paris</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="profile-card">
+                <img src="avocat2.jpg" alt="Avocat 2">
+                <h3>Marie Curie</h3>
+                <p>Spécialité: Droit du travail</p>
+                <p>Avis: ★★★★★</p>
+                <p>Prix: 120€/h</p>
+                <p>Localisation: Lyon</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="profile-card">
+                <img src="avocat3.jpg" alt="Avocat 3">
+                <h3>Alain Proviste</h3>
+                <p>Spécialité: Droit des étrangers</p>
+                <p>Avis: ★★★★☆</p>
+                <p>Prix: 110€/h</p>
+                <p>Localisation: Marseille</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="profile-card">
+                <img src="avocat4.jpg" alt="Avocat 4">
+                <h3>Sophie Lavigne</h3>
+                <p>Spécialité: Droit pénal</p>
+                <p>Avis: ★★★★☆</p>
+                <p>Prix: 150€/h</p>
+                <p>Localisation: Bordeaux</p>
+                <button>Voir Profil</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="articles section">
+        <h2>Articles les plus visités</h2>
+        <div class="article-card">
+            <h3>Comment obtenir un titre de séjour ?</h3>
+            <p>Découvrez les étapes pour obtenir un titre de séjour en France.</p>
+            <p>Écrit par: Jean Dupont</p>
+        </div>
+        <div class="article-card">
+            <h3>Les droits des travailleurs étrangers</h3>
+            <p>Comprendre les droits des travailleurs étrangers en France.</p>
+            <p>Écrit par: Marie Curie</p>
+        </div>
+        <div class="article-card">
+            <h3>Procédure de naturalisation</h3>
+            <p>Les étapes pour devenir citoyen français.</p>
+            <p>Écrit par: Alain Proviste</p>
+        </div>
+        <button class="cta-button">Voir plus</button>
+    </div>
+
+    <div class="faq section">
+        <h2>FAQ les plus posées</h2>
+        <div class="faq-item">
+            <h3>Comment prendre un rendez-vous en préfecture ?</h3>
+            <p>Vous pouvez prendre un rendez-vous en ligne via notre site.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quels documents sont nécessaires pour une demande de naturalisation ?</h3>
+            <p>Les documents nécessaires incluent un acte de naissance, un justificatif de domicile, etc.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Comment trouver un avocat spécialisé ?</h3>
+            <p>Utilisez notre barre de recherche pour trouver un avocat spécialisé près de chez vous.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quels sont les coûts pour une consultation juridique ?</h3>
+            <p>Les coûts varient selon l'avocat et la spécialité. Consultez les profils des avocats pour plus de détails.</p>
+        </div>
+    </div>
+
+    <div class="testimonials section">
+        <h2>Que pensent nos utilisateurs</h2>
+        <div class="reviews">
+            <div class="review">
+                <p>"Excellent service, avocat très compétent et à l'écoute."</p>
+                <p>- Utilisateur 1</p>
+            </div>
+            <div class="review">
+                <p>"La plateforme est très facile à utiliser, je recommande!"</p>
+                <p>- Utilisateur 2</p>
+            </div>
+            <div class="review">
+                <p>"Des avocats de qualité, j'ai trouvé rapidement l'aide dont j'avais besoin."</p>
+                <p>- Utilisateur 3</p>
+            </div>
+        </div>
+        <button class="review-button">Mettez votre avis aussi</button>
+    </div>
+
+    <footer>
+        <div class="column">
+            <img src="logo.png" alt="Logo" class="logo">
+            <p>Suivez-nous</p>
+            <div class="social-icons">
+                <img src="facebook.png" alt="Facebook">
+                <img src="linkedin.png" alt="LinkedIn">
+                <img src="tiktok.png" alt="TikTok">
+                <img src="twitter.png" alt="Twitter">
+                <img src="youtube.png" alt="YouTube">
+            </div>
+            <p><a href="tel:0980806272" style="color: white;">09 80 80 62 72</a></p>
+        </div>
+        <div class="column">
+            <h3>À propos</h3>
+            <ul>
+                <li><a href="#" style="color: white;">Connexion Avocat</a></li>
+                <li><a href="#" style="color: white;">Trouver un avocat</a></li>
+                <li><a href="#" style="color: white;">Qui sommes-nous</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <p>Les paiements effectués sur le site sont sécurisés grâce à :</p>
+            <div class="payment-icons">
+                <img src="paypal.png" alt="PayPal">
+                <img src="visa.png" alt="Visa">
+                <img src="mastercard.png" alt="MasterCard">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

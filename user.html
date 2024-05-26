@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Utilisateur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #7cb1e6;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .section {
+            padding: 20px;
+            margin-top: 60px; /* espace pour l'entête fixe */
+        }
+
+        .logo {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .menu-icon {
+            float: right;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 50px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul li {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .menu ul li:hover {
+            background: #f0f0f0;
+        }
+
+        .center-content {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .center-content h2 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+        }
+
+        .search-bar input, .search-bar select, .search-bar button {
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        .search-bar input, .search-bar select {
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .cta-links .cta-item {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            text-align: center;
+            width: 30%;
+        }
+
+        .cta-links .cta-item:hover {
+            background-color: #002244;
+        }
+
+        .documents, .recommended-lawyers, .faq, .testimonials {
+            padding: 40px 20px;
+        }
+
+        .documents h2, .recommended-lawyers h2, .faq h2, .testimonials h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            width: 30%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .card h3 {
+            text-align: center;
+        }
+
+        .card p {
+            text-align: center;
+        }
+
+        .card button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto 0;
+            width: 100%;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer .logo {
+            margin-bottom: 10px;
+        }
+
+        footer .social-icons img {
+            width: 30px;
+            margin: 5px;
+        }
+
+        footer .column {
+            flex: 1;
+        }
+
+        footer .column h3 {
+            margin-bottom: 10px;
+        }
+
+        footer .column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .column ul li {
+            margin-bottom: 10px;
+        }
+
+        footer .payment-icons img {
+            width: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        👋 Nous sommes disponibles sur le 09 80 80 62 72 pour une consultation en ligne
+    </header>
+
+    <div class="section">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            ☰
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li>Rechercher un avocat</li>
+                <li>Mes consultations</li>
+                <li>Mes avis</li>
+                <li>Gérez mon compte</li>
+            </ul>
+        </div>
+        <div class="center-content">
+            <h2>Besoin d'avocat ?</h2>
+            <div class="search-bar">
+                
+                <select>
+                    <option value="">Spécialité</option>
+                    <option value="famille">Droit de la famille</option>
+                    <option value="travail">Droit du travail</option>
+                    <option value="etrangers">Droit des étrangers</option>
+                </select>
+                <select>
+                    <option value="">Localisation</option>
+                    <option value="paris">Paris</option>
+                    <option value="lyon">Lyon</option>
+                    <option value="marseille">Marseille</option>
+                </select>
+                <button>Chercher</button>
+            </div>
+            <div class="cta-links">
+                <div class="cta-item">Prendre un rendez-vous</div>
+                <div class="cta-item">Consultation en ligne</div>
+                <div class="cta-item">Poser une question</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="documents section">
+        <h2>Documents les plus récents</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Document 1</h3>
+                <p>Description du document 1.</p>
+                <p>Écrit par: Jean Dupont</p>
+            </div>
+            <div class="card">
+                <h3>Document 2</h3>
+                <p>Description du document 2.</p>
+                <p>Écrit par: Marie Curie</p>
+            </div>
+            <div class="card">
+                <h3>Document 3</h3>
+                <p>Description du document 3.</p>
+                <p>Écrit par: Alain Proviste</p>
+            </div>
+            <div class="card">
+                <h3>Document 4</h3>
+                <p>Description du document 4.</p>
+                <p>Écrit par: Sophie Lavigne</p>
+            </div>
+            <div class="card">
+                <h3>Document 5</h3>
+                <p>Description du document 5.</p>
+                <p>Écrit par: Paul Martin</p>
+            </div>
+            <div class="card">
+                <h3>Document 6</h3>
+                <p>Description du document 6.</p>
+                <p>Écrit par: Clara Dubois</p>
+            </div>
+        </div>
+        <button class="cta-button">Voir plus</button>
+    </div>
+
+    <div class="recommended-lawyers section">
+        <h2>Avocats recommandés</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="avocat1.jpg" alt="Avocat 1">
+                <h3>Jean Dupont</h3>
+                <p>Spécialité: Droit de la famille</p>
+                <p>Avis: ★★★★☆</p>
+                <p>Prix: 100€/h</p>
+                <p>Localisation: Paris</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="card">
+                <img src="avocat2.jpg" alt="Avocat 2">
+                <h3>Marie Curie</h3>
+                <p>Spécialité: Droit du travail</p>
+                <p>Avis: ★★★★★</p>
+                <p>Prix: 120€/h</p>
+                <p>Localisation: Lyon</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="card">
+                <img src="avocat3.jpg" alt="Avocat 3">
+                <h3>Alain Proviste</h3>
+                <p>Spécialité: Droit des étrangers</p>
+                <p>Avis: ★★★★☆</p>
+                <p>Prix: 110€/h</p>
+                <p>Localisation: Marseille</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="card">
+                <img src="avocat4.jpg" alt="Avocat 4">
+                <h3>Sophie Lavigne</h3>
+                <p>Spécialité: Droit pénal</p>
+                <p>Avis: ★★★★☆</p>
+                <p>Prix: 150€/h</p>
+                <p>Localisation: Bordeaux</p>
+                <button>Voir Profil</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq section">
+        <h2>FAQ les plus posées</h2>
+        <div class="faq-item">
+            <h3>Comment prendre un rendez-vous en préfecture ?</h3>
+            <p>Vous pouvez prendre un rendez-vous en ligne via notre site.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quels documents sont nécessaires pour une demande de naturalisation ?</h3>
+            <p>Les documents nécessaires incluent un acte de naissance, un justificatif de domicile, etc.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Comment trouver un avocat spécialisé ?</h3>
+            <p>Utilisez notre barre de recherche pour trouver un avocat spécialisé près de chez vous.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quels sont les coûts pour une consultation juridique ?</h3>
+            <p>Les coûts varient selon l'avocat et la spécialité. Consultez les profils des avocats pour plus de détails.</p>
+        </div>
+    </div>
+
+    <div class="testimonials section">
+        <h2>Que pensent nos utilisateurs de nous</h2>
+        <div class="card-container">
+            <div class="card">
+                <p>“Service rapide et efficace. J'ai pu obtenir mon titre de séjour sans soucis.”</p>
+                <p>- Pierre M.</p>
+            </div>
+            <div class="card">
+                <p>“Les avocats sont très professionnels et à l'écoute.”</p>
+                <p>- Clara D.</p>
+            </div>
+            <div class="card">
+                <p>“Je recommande vivement ce site pour toute assistance juridique.”</p>
+                <p>- Ahmed K.</p>
+            </div>
+        </div>
+        <button class="cta-button">Mettez votre avis aussi</button>
+    </div>
+
+    <footer>
+        <div class="column">
+            <img src="logo.png" alt="Logo" class="logo">
+            <p>Suivez-nous</p>
+            <div class="social-icons">
+                <img src="facebook.png" alt="Facebook">
+                <img src="linkedin.png" alt="LinkedIn">
+                <img src="tiktok.png" alt="TikTok">
+                <img src="twitter.png" alt="Twitter">
+                <img src="youtube.png" alt="YouTube">
+            </div>
+            <p><a href="tel:0980806272" style="color: white;">09 80 80 62 72</a></p>
+        </div>
+        <div class="column">
+            <h3>À propos</h3>
+            <ul>
+                <li><a href="#" style="color: white;">Connexion Avocat</a></li>
+                <li><a href="#" style="color: white;">Trouver un avocat</a></li>
+                <li><a href="#" style="color: white;">Qui sommes-nous</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <p>Les paiements effectués sur le site sont sécurisés grâce à :</p>
+            <div class="payment-icons">
+                <img src="paypal.png" alt="PayPal">
+                <img src="visa.png" alt="Visa">
+                <img src="mastercard.png" alt="MasterCard">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

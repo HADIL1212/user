@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recherche avocat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+
+        header .cta {
+            background-color: #7cb1e6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #section1 {
+            padding-top: 60px;
+            background-color: #f0f4f8;
+            color: rgb(12, 7, 88);
+            text-align: center;
+            padding: 100px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            align-items: left;
+        }
+
+        .menu-icon, .avocat-button {
+            background: none;
+            border: none;
+            color: rgb(10, 1, 1);
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        .search-section {
+            margin-top: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .search-bar .search-button, .search-bar .filter-button {
+            padding: 10px 20px;
+            background-color: rgb(43, 21, 143);
+            color: #f0f4f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        #filters {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #filters input {
+            padding: 10px;
+            width: 200px;
+            margin: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        #section2 {
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .avocat-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .avocat {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .avocat img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        #section3 {
+            padding: 20px;
+            background-color: #eaeaea;
+        }
+
+        .faq-list .faq {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #section4 {
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .reviews {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .review {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px;
+            width: 30%;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #0b3e70;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #0b3e70;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .footer-left, .footer-center, .footer-right {
+            width: 30%;
+            text-align: center;
+        }
+
+        .footer-left .social-icons a {
+            display: inline-block;
+            margin: 5px;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cta">👋 Nous sommes disponibles sur le 09 80 80 62 72 pour une consultation en ligne</div>
+    </header>
+
+    <section id="section1">
+        <div class="header-content">
+            <div class="logo">LOGO</div>
+            <div class="menu">
+                <button class="menu-icon" onclick="toggleMenu()">☰</button>
+                <button class="avocat-button">Vous êtes un avocat ?</button>
+            </div>
+        </div>
+        <div class="search-section">
+            <h2>Cherchez un avocat selon vos besoins</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Spécialité, Localisation">
+                <button class="search-button">Chercher</button>
+                <button class="filter-button" onclick="toggleFilters()">Affiner vos recherches</button>
+            </div>
+            <div class="filters" id="filters">
+                <input type="text" placeholder="Spécialité">
+                <input type="text" placeholder="Localisation">
+                <input type="text" placeholder="Tarif moyen">
+                <input type="text" placeholder="Langue">
+                <input type="date" placeholder="Disponibilité">
+            </div>
+        </div>
+    </section>
+
+    <section id="section2">
+        <h2>Les résultats de votre recherche</h2>
+        <div class="avocat-list">
+            <!-- Exemple d'un avocat -->
+            <div class="avocat">
+                <img src="https://via.placeholder.com/150" alt="Avocat">
+                <h3>Nom de l'Avocat</h3>
+                <p>Spécialité: Droit de l'immigration</p>
+                <p>Localisation: Paris</p>
+                <p>Tarif moyen: 100€/heure</p>
+                <p>Note: ★★★★☆</p>
+                <button>Voir Profil</button>
+            </div>
+            <!-- Répétez pour les autres avocats -->
+            <div class="avocat">
+                <img src="https://via.placeholder.com/150" alt="Avocat">
+                <h3>Nom de l'Avocat</h3>
+                <p>Spécialité: Droit de l'immigration</p>
+                <p>Localisation: Paris</p>
+                <p>Tarif moyen: 100€/heure</p>
+                <p>Note: ★★★★☆</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="avocat">
+                <img src="https://via.placeholder.com/150" alt="Avocat">
+                <h3>Nom de l'Avocat</h3>
+                <p>Spécialité: Droit de l'immigration</p>
+                <p>Localisation: Paris</p>
+                <p>Tarif moyen: 100€/heure</p>
+                <p>Note: ★★★★☆</p>
+                <button>Voir Profil</button>
+            </div>
+            <div class="avocat">
+                <img src="https://via.placeholder.com/150" alt="Avocat">
+                <h3>Nom de l'Avocat</h3>
+                <p>Spécialité: Droit de l'immigration</p>
+                <p>Localisation: Paris</p>
+                <p>Tarif moyen: 100€/heure</p>
+                <p>Note: ★★★★☆</p>
+                <button>Voir Profil</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="section3">
+        <h2>Les FAQs les plus posées</h2>
+        <div class="faq-list">
+            <div class="faq">
+                <h3>Comment trouver un avocat?</h3>
+                <p>Utilisez notre barre de recherche pour trouver un avocat par spécialité et localisation.</p>
+            </div>
+            <!-- Répétez pour les autres FAQs -->
+            <div class="faq">
+                <h3>Quels sont les tarifs moyens?</h3>
+                <p>Les tarifs varient selon la spécialité et l'expérience de l'avocat.</p>
+            </div>
+            <div class="faq">
+                <h3>Comment prendre rendez-vous?</h3>
+                <p>Vous pouvez prendre rendez-vous directement sur le profil de l'avocat.</p>
+            </div>
+            <div class="faq">
+                <h3>Quels services offrez-vous?</h3>
+                <p>Nous offrons une gamme de services juridiques couvrant divers domaines de droit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="section4">
+        <h2>Que pensent nos utilisateurs</h2>
+        <div class="reviews">
+            <div class="review">
+                <p>"Excellent service, avocat très compétent et à l'écoute."</p>
+                <p>- Utilisateur 1</p>
+            </div>
+            <div class="review">
+                <p>"La plateforme est très facile à utiliser, je recommande!"</p>
+                <p>- Utilisateur 2</p>
+            </div>
+            <div class="review">
+                <p>"Des avocats de qualité, j'ai trouvé rapidement l'aide dont j'avais besoin."</p>
+                <p>- Utilisateur 3</p>
+            </div>
+        </div>
+        <button class="review-button">Mettez votre avis aussi</button>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="logo">LOGO</div>
+                <p>Suivez nous</p>
+                <div class="social-icons">
+                    <a href="#">Facebook</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">TikTok</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">YouTube</a>
+                </div>
+                <p><a href="tel:0980806272">09 80 80 62 72</a></p>
+            </div>
+            <div class="footer-center">
+                <h3>À propos</h3>
+                <button>Connexion Avocat</button>
+                <button>Trouver un Avocat</button>
+                <button>Qui sommes nous</button>
+            </div>
+            <div class="footer-right">
+                <p>Les paiements effectués sur le site sont sécurisés grâce à :</p>
+                <div class="payment-icons">
+                    <img src="https://via.placeholder.com/50" alt="PayPal">
+                    <img src="https://via.placeholder.com/50" alt="Visa">
+                    <img src="https://via.placeholder.com/50" alt="MasterCard">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var items = document.querySelectorAll('.menu-icon, .avocat-button');
+            items.forEach(item => {
+                item.classList.toggle('show');
+            });
+        }
+
+        function toggleFilters() {
+            var filters = document.getElementById('filters');
+            if (filters.style.display === "none" || filters.style.display === "") {
+                filters.style.display = "block";
+            } else {
+                filters.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
